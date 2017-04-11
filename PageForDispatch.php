@@ -3,7 +3,7 @@
 // ОТПРАВЛЯЕМ ЗАЯВКУ В ТЕЛЕГРАМ
 
 require_once 'Autoload.php';
-
+// Для примера пост массив приходящий с сайта ДМС
 $_POST = [
     "id"     => 3,
     "status" => false,
@@ -12,27 +12,58 @@ $_POST = [
     "sex"    => "муж",
     "typeProgram" => "Стоматология",
     "priceLevelProgram" => "Эконом",
-    "info" => "Мне ноебходимо застраховать мужа, он боксер"
+    "info" => "Мне ноебходимо застраховать мужа, он хоккеист"
 ];
 
-var_dump($_POST);
 
 
+$bid = new \Bot\Bid();
+$bid
+    ->setId               ($_POST["id"])
+    ->setStatus           ($_POST["status"])
+    ->setName             ($_POST["name"])
+    ->setPhone            ($_POST["phone"])
+    ->setSex              ($_POST["sex"])
+    ->setTypeProgram      ($_POST["typeProgram"])
+    ->setPriceLevelProgram($_POST["priceLevelProgram"])
+    ->setInfo             ($_POST["info"]);
 
+$bot = new \Bot\BotDms();
 
+$msg = $bot->createMsgOfBid($bid);
 
+$bot->sendMessage($msg);
 
-
-
-// создание нового cURL ресурса
-//$ch = curl_init();
+//echo $msg->getText();
+//$msg = new \Bot\Message();
 //
-//// установка URL и других необходимых параметров
-//curl_setopt($ch, CURLOPT_URL, "https://api.telegram.org/bot308308894:AAHU2h4OIyR9w3k5JSV_rXB8te947o3yZPg/sendMessage?chat_id=225283121&text=hello");
-//curl_setopt($ch, CURLOPT_HEADER, 0);
+//$msg
+//    ->setText  ('Hello!!!!')
+//    ->setChatId('225283121');
 //
-//// загрузка страницы и выдача её браузеру
-//curl_exec($ch);
+//$bot = new \Bot\BotDms();
 //
-//// завершение сеанса и освобождение ресурсов
-//curl_close($ch);
+//$res = $bot->sendMessage($msg);
+//
+//echo "<br>-----------------------------------------------------------------------------------------------<br>"
+//    . $res;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

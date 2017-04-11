@@ -52,6 +52,11 @@ class Bid
     private $info;
 
     /**
+     * @var string
+     */
+    private $insurer;
+
+    /**
      * @param int $id
      * @return Bid
      */
@@ -129,5 +134,87 @@ class Bid
     {
         $this->info = $info;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isStatus(): bool
+    {
+        return $this->status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSex(): string
+    {
+        return $this->sex;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypeProgram(): string
+    {
+        return $this->typeProgram;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPriceLevelProgram(): string
+    {
+        return $this->priceLevelProgram;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInfo(): string
+    {
+        return $this->info;
+    }
+
+    /**
+     * @param string $insurer
+     * @return Bid
+     */
+    public function setInsurer(string $insurer): Bid
+    {
+        $this->insurer = $insurer;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInsurer(): string
+    {
+        return $this->insurer;
     }
 }
